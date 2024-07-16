@@ -26,9 +26,9 @@ body {
 }
 .buttons {
   display: flex;
-  flex-wrap: wrap; /* Allow items to wrap onto the next line */
-  gap: 10px; /* Add spacing between items */
-  justify-content: center; /* Center items horizontally */
+  flex-wrap: wrap; 
+  gap: 10px; 
+ justify-content: center;
 }
 
 /* Each button will take up 22% of the parent width, adjusted for gap */
@@ -45,7 +45,6 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.2s;
 }
 .button:hover {
   background-color: #ccc;

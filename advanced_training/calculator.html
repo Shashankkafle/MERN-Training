@@ -7,27 +7,27 @@
     <link rel="stylesheet" href="calculator.css" />
   </head>
   <body>
-    <script src="calculator.js"></script>
     <div class="calculator">
       <div class="display" id="display">0</div>
       <div class="buttons">
-        <button class="button" onclick="appendNumber('7')">7</button>
-        <button class="button" onclick="appendNumber('8')">8</button>
-        <button class="button" onclick="appendNumber('9')">9</button>
+        <button class="button" onclick="appendNumber(event)">7</button>
+        <button class="button" onclick="appendNumber(event)">8</button>
+        <button class="button" onclick="appendNumber(event)">9</button>
         <button class="button operation" onclick="setOperation('/')">/</button>
-        <button class="button" onclick="appendNumber('4')">4</button>
-        <button class="button" onclick="appendNumber('5')">5</button>
-        <button class="button" onclick="appendNumber('6')">6</button>
+        <button class="button" onclick="appendNumber(event)">4</button>
+        <button class="button" onclick="appendNumber(event)">5</button>
+        <button class="button" onclick="appendNumber(event)">6</button>
         <button class="button operation" onclick="setOperation('*')">*</button>
-        <button class="button" onclick="appendNumber('1')">1</button>
-        <button class="button" onclick="appendNumber('2')">2</button>
-        <button class="button" onclick="appendNumber('3')">3</button>
+        <button class="button" onclick="appendNumber(event)">1</button>
+        <button class="button" onclick="appendNumber(event)">2</button>
+        <button class="button" onclick="appendNumber(event)">3</button>
         <button class="button operation" onclick="setOperation('-')">-</button>
-        <button class="button" onclick="appendNumber('0')">0</button>
+        <button class="button" onclick="appendNumber(event)">0</button>
         <button class="button" onclick="clearDisplay()">C</button>
         <button class="button" onclick="calculate()">=</button>
         <button class="button operation" onclick="setOperation('+')">+</button>
       </div>
     </div>
   </body>
+  <script src="calculator.js"></script>
 </html>
