@@ -1,76 +1,58 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Document</title>
-  <style>
-    /* Add basic styles for the button */
-    #counterButton {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      background-color: lightgray;
-      border: none;
-      border-radius: 5px;
-    }
-  </style>
-</head>
-<body style='padding: 10px; background-color: chocolate; display: flex; justify-content: center; align-items: center;'>
-  <div id="container" style='height: 400px; width: 400px; padding: 20px; background-color: blanchedalmond; display: flex; justify-content: center; align-items: center; flex-direction: column;'>
-    <h1 class="title">Title</h1>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis beatae eligendi architecto ratione accusantium? Ratione sapiente</p>
-    <!-- Add a button for the counter -->
-    <button id="counterButton" onclick='buttonClick()' onmouseover='mouseIn()' onmouseout='mouseOut()'>Click me: 0</button>
-  </div>
+  <head>
+    <title>Document</title>
+    <style>
+      /* Add basic styles for the button */
+      #counterButton {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: lightgray;
+        border: none;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      padding: 10px;
+      background-color: chocolate;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <div
+      id="container"
+      style="
+        height: 400px;
+        width: 400px;
+        padding: 20px;
+        background-color: blanchedalmond;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      "
+    >
+      <h1 class="title">Title</h1>
+      <p>WHO'S THAT POKEMAN</p>
+      <!-- Add a button for the counter -->
+      <button id="counterButton" onclick="fetchPokemanData(56)">
+        Click to get pokemanData
+      </button>
+    </div>
 
-  <script>
-    const container  = document.getElementById('container')
-
-    console.log("container",container)
-    // let container = document.getElementById('container');
-    let title = document.querySelector('title') // <h1>
-        console.log("title",title)
-    // let paragraph = title.nextElementSibling; // <p>
-    // console.log(container.nodeName); // "DIV"
-    // console.log("this is title:", title, "\n this is title content", title.textContent); // "Title"
-    // console.log("this is paragraph", paragraph, "\n this is paragraph content: ", paragraph.textContent); // "Paragraph"
-
-    // // Change the content of the page using javascript
-    // title.textContent = 'New Title';
-    // paragraph.textContent = 'New paragraph content';
-
-    // // Set new HTML content
-    // container.innerHTML = `
-    //   <h1>New Heading</h1>
-    //   <p>This is new paragraph content.</p>
-    //   <ul>
-    //     <li>List item 1</li>
-    //     <li>List item 2</li>
-    //   </ul>
-    // `;
-
-    // // Append child elements using javascript
-    // let newParagraph = document.createElement('p');
-    // newParagraph.textContent = 'This is a new paragraph that is added through javascript';
-    // newParagraph.className = 'my-paragraph';
-    // container.appendChild(newParagraph);
-
-   let counterButton = document.getElementById('counterButton')
-   console.log(counterButton);
-
-    let counter = 0;
-
-    function buttonClick() {
-      counter++;
-      counterButton.textContent = 'Click me: ' + counter;
-    };
-
-    function mouseIn() {
-      counterButton.style.backgroundColor = 'darkgray';
-    };
-
-    function mouseOut() {
-      counterButton.style.backgroundColor = 'lightgray';
-    };
-  </script>
-</body>
+    <script>
+      let container = document.getElementById("container");
+      const fetchPokemanData = async (id) => {
+        const response = fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        console.log(response);
+        const result = await response;
+        const pokemanData = await result.json();
+        container.textContent = `name: ${pokemanData.name}, height:${pokemanData.height}, id:${pokemanData.id}`;
+      };
+    </script>
+  </body>
 </html>
