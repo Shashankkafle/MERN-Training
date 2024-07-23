@@ -31,10 +31,11 @@
 // })();
 
 const fetchPokemanData = async (id) => {
-  const response = fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-  console.log(response);
+  // function 1
+  const response = fetch(`https://pokeapi.co/api/v2/pokemon/${id}`); // different fucnntion which is returned by fetch
   const result = await response;
   const pokemanData = await result.json();
+  console.log(pokemanData);
   console.log("this is response", pokemanData.id, pokemanData.height);
 };
 

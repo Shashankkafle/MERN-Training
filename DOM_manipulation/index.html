@@ -47,7 +47,7 @@
     <script>
       let container = document.getElementById("container");
       const fetchPokemanData = async (id) => {
-        const response = fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        let response = fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
         console.log(response);
         const result = await response;
         const pokemanData = await result.json();
