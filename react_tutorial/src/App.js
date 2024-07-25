@@ -1,24 +1,71 @@
-import { useState, useEffect } from "react";
-import WeatherInfoCard from "./component/WeatherInfoCard";
-import Container from "./layout/Container";
-import SearchFrom from "./component/SearchFrom";
-
+import { useState } from 'react';
+import Current from './pages/Current';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Nav from './component/Nav';
+import Login from './pages/Login';
+import Forecast from './pages/Forecast';
+import ProtectedRoute from './component/ProtectedRoute';
+import ParamsPage from './pages/ParamsPage';
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [weatherData, setWeatherData] = useState("");
+	const [loggedIn, setLoggedIn] = useState(false);
 
-  return (
-    <div className="flex justify-center gap-3 items-center h-screen bg-gray-100">
-      <Container>
-        <h1 className="text-3xl font-semibold mb-6 text-green-500 text-center">
-          Weather App
-        </h1>
-        <SearchFrom weatherData={setWeatherData} isLoading={setIsLoading} />
-        {isLoading ? "Loading ....." : null}
-        {weatherData ? <WeatherInfoCard data={weatherData} /> : null}
-      </Container>
-    </div>
-  );
+	const router = createBrowserRouter([
+		{
+			path: '/forecast',
+			element: (
+				<>
+					<ProtectedRoute loggedIn={loggedIn}>
+						<Nav
+							loggedIn={loggedIn}
+							setLoggedIn={setLoggedIn}
+						></Nav>
+						<Forecast />
+					</ProtectedRoute>
+				</>
+			),
+		},
+		{
+			path: '/',
+			element: (
+				<>
+					<Nav loggedIn={loggedIn} setLoggedIn={setLoggedIn}></Nav>
+					<Current />
+				</>
+			),
+		},
+		{
+			path: '/current',
+			element: (
+				<>
+					<Nav loggedIn={loggedIn} setLoggedIn={setLoggedIn}></Nav>
+					<Current />
+				</>
+			),
+		},
+		{
+			path: '/current/:city',
+			element: (
+				<>
+					<Nav loggedIn={loggedIn} setLoggedIn={setLoggedIn}></Nav>
+					<ParamsPage />
+				</>
+			),
+		},
+		{
+			path: '/login',
+			element: (
+				<>
+					<Nav loggedIn={loggedIn} setLoggedIn={setLoggedIn}></Nav>
+					<Login setLoggedin={setLoggedIn} />
+				</>
+			),
+		},
+	]);
+	return (
+		<>
+			<RouterProvider router={router} />
+		</>
+	);
 }
 
 export default App;
